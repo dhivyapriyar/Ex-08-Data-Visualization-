@@ -19,6 +19,132 @@ Apply data visualization techniques to identify the patterns of the data.
 
 # CODE
 
+NAME: DHIVYAPRIYA.R
+
+REGISTER NO.:212222230032
+
+Data Preprocessing
+
+import seaborn as sns
+
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("tips")
+
+print(df)
+
+df.isnull().sum()
+
+Handling Outliers
+
+plt.figure(figsize=(8,8))
+
+plt.title("Data with Outliers")
+
+df.boxplot()
+
+plt.show()
+
+Removing Outliers
+
+plt.figure(figsize=(8,8))
+
+cols = ['size','tip','total_bill']
+
+Q1 = df[cols].quantile(0.25)
+
+Q3 = df[cols].quantile(0.75)
+
+IQR = Q3 - Q1
+
+df = df[~((df[cols] < (Q1 - 1.5 * IQR)) |(df[cols] > (Q3 + 1.5 * IQR))).any(axis=1)]
+
+plt.title("Dataset after removing outliers")
+
+df.boxplot()
+
+plt.show()
+
+1) Which day of the week has the highest total bill amount?
+
+sns.barplot(x=df['day'], y=df['total_bill'], hue=df['day'])
+
+plt.legend(loc="center")
+
+plt.title("Highest Total Bill Amount by day of the week")
+
+plt.show()
+
+2) What is the average tip amount given by smokers and non-smokers?
+
+sns.boxplot(x=df['smoker'], y=df['tip'], hue=df['smoker'])
+
+plt.title("Average Tip Amount given by smokers and non-smokers")
+
+3) How does the tip percentage vary based on the size of the dining party?
+
+df["tip_percent"] = df["tip"] / df["total_bill"]
+
+sns.scatterplot(x=df['size'],y=df['tip_percent'],data=df)
+
+plt.title("Tip Percentage by Dining Party Size")
+
+4) Which gender tends to leave higher tips?
+
+sns.boxplot(x=df['sex'], y=df['tip'],hue=df['sex'])
+
+plt.title("Tips based on gender")
+
+5) Is there any relationship between the total bill amount and the day of the week?
+
+sns.scatterplot(x=df['day'],y=df['total_bill'],hue=df['day'])
+
+plt.legend(loc="best")
+
+plt.title("Total bill amount by day of the week")
+
+6) How does the distribution of total bill amounts vary across different time periods (lunch vs. dinner)?
+
+sns.histplot(data=df, x="total_bill", hue="time", element="step", stat="density")
+
+plt.title("Distribution of Total Bill Amounts by Time of Day")
+
+plt.show()
+
+7) Which dining party size group tends to have the highest average total bill amount?
+
+sns.barplot(x=df['size'],y=df['total_bill'],hue=df['size'])
+
+plt.title("Average Total Bill Amount by Dining Party Size")
+
+plt.show()
+
+8) What is the distribution of tip amounts for each day of the week?
+
+sns.boxplot(x="day", y="tip", data=df)
+
+plt.title("Tip Amount by Day of Week")
+
+plt.show()
+
+9) How does the tip amount vary based on the type of service (lunch vs. dinner)?
+
+sns.violinplot(x="time", y="tip", data=df)
+
+plt.title("Tip Amount by Time of Day")
+
+plt.show()
+
+10) Is there any correlation between the total bill amount and the tip amount?
+
+sns.scatterplot(x="total_bill", y="tip", data=df)
+
+plt.title("Correlation between Tip Amount and Total Bill Amount")
+
+plt.show()
+
 # OUPUT
 ![Screenshot 2023-05-19 110739](https://github.com/dhivyapriyar/Ex-08-Data-Visualization-/assets/119477552/35017402-cb67-4f50-b126-65425c8ccc0f)
 ![Screenshot 2023-05-19 110814](https://github.com/dhivyapriyar/Ex-08-Data-Visualization-/assets/119477552/690d7898-273f-421e-8a6a-7680a13fb636)
