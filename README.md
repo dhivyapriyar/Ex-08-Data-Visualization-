@@ -161,3 +161,6 @@ plt.show()
 ![Screenshot 2023-05-19 111312](https://github.com/dhivyapriyar/Ex-08-Data-Visualization-/assets/119477552/fc420faf-b183-4ed8-ad3d-107d0617cde4)
 ![Screenshot 2023-05-19 111331](https://github.com/dhivyapriyar/Ex-08-Data-Visualization-/assets/119477552/4ac650fa-d85e-412b-ab99-675fd847b3ea)
 
+# RESULT
+
+Thus the Data Visualization on the given dataset is performed.
